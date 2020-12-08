@@ -9,11 +9,15 @@ import scipy.stats
 
 from . import models
 
+import warnings
+warnings.filterwarnings('ignore')
 
 stream = pkg_resources.resource_stream(__name__, 'data/gardner_time_to_catastrophe_dic_tidy.csv')
 df = pd.read_csv(stream)
 
 labeled = df[df["labeled"] == True]
+labeled["labeled"] = "Labeled Tubulin"
+
 
 def get_labeled():
     return labeled

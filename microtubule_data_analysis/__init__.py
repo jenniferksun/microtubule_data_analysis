@@ -3,7 +3,10 @@
 from .models import *
 from .tubulin_distributions import *
 from .tubulin_concentration import *
-# from .module3 import *
+from .gen_ecdf import *
+from .simulating_distributions import *
+from .gen_conf_ints import *
+
 
 __author__ = 'Jennifer Sun'
 __email__ = 'jksun@caltech.edu'
