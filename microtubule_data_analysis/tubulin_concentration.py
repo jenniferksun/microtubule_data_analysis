@@ -98,7 +98,7 @@ def draw_bs_reps_gamma(df=time, path="../data/", rerun=False, size=10000):
 
         path = os.path.join(path, "bs_rep_tubulin_concentrations_gamma.csv")    
         data.to_csv(path, index = False, header=True)
-        return df
+        return data
     
     
 # Sum of two exponential distributions   
@@ -168,7 +168,7 @@ def draw_bs_reps_two_exp(df=time, path="../data/", rerun=False, size=10000):
 
         path = os.path.join(path, "bs_rep_tubulin_concentrations_two_exp.csv")    
         data.to_csv(path, index = False, header=True)
-        return df
+        return data
         
         
 # Plots 
@@ -266,7 +266,7 @@ def plot_mle_conf_int_two_exp(concentration=12):
         data=time[time["Concentration (uM)"] == f"{concentration} uM"],
         q="Time to Catastrophe (s)",
         cats="Concentration (uM)",
-        title=f"ECDF and two Exponential Distributions of {concentration} uM Tubulin Catastrophe Times",
+        title=f"ECDF and Sum of Two Exponential Distributions of {concentration} uM Tubulin Catastrophe Times",
         conf_int=True,
         palette=[bokeh.colors.named.lightgray.to_hex()],
         plot_width=600,
