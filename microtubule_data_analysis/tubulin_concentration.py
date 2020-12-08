@@ -198,7 +198,7 @@ def plot_stripbox():
     
     bokeh.io.show(p)
 
-def plot_ecdf_gamma_all():
+def plot_ecdf_all():
     p = iqplot.ecdf(
         data=time,
         q="Time to Catastrophe (s)",
@@ -209,7 +209,7 @@ def plot_ecdf_gamma_all():
     
     bokeh.io.show(p)
     
-def plot_mle():
+def plot_mle_gamma():
     mle = get_mle_gamma()
     
     p = figure(
@@ -275,7 +275,6 @@ def plot_mle_conf_int_two_exp(concentration=12):
 
     # Plot CDFs of time to catastrophe.
     t = np.linspace(0, 2000)
-    print(data.iloc[0]["Beta_1 MLE"])
     f_mle = models.cdf_two_exp(t, data.iloc[0]["Beta_1 MLE"], data.iloc[0]["Beta_2 MLE"])
     f_lo = models.cdf_two_exp(t, data.iloc[0]["Beta_1 Low"], data.iloc[0]["Beta_2 Low"])
     f_hi = models.cdf_two_exp(t, data.iloc[0]["Beta_1 High"], data.iloc[0]["Beta_2 High"])
