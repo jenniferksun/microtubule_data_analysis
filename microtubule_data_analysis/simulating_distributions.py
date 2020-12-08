@@ -12,7 +12,7 @@ from . import gen_ecdf
 
 from scipy.stats import norm
 
-def simulate_experiment_with_exponential():
+def plot_simulated_experiment():
     """Generate plot of ECDFs of catastrophe processes modeled as two successive
     Poisson events, for different ratios of rates of the Poisson processes"""
     # Creating colors
@@ -55,13 +55,16 @@ def simulate_experiment_with_exponential():
         )
     p.legend.title = "beta2/beta1 ratio"
     p.legend.click_policy="hide"
-    return p
+    return bokeh.io.show(p)
 
 
-def compare_ecdf_with_analytical_cdf():
+def plot_ecdf_and_analytical_cdf_comparison():
     """Generate overlayed plots of the randomly generated ECDF and the
     analytical CDF of the catastrophe with rates of 1 and 0.25 for the first
     and second processes respectively"""
+    # Creating colors
+    palette = bokeh.palettes.Bokeh[7]
+
     # Define the rate arrivals of the two Poisson processes.
     B_1 = 1
     B_2 = 0.25
@@ -89,11 +92,11 @@ def compare_ecdf_with_analytical_cdf():
 
 
     # Plot a CDF and ECDF of the times to catastrophe for B_2 / B_1 = 0.25.
-    p = figure(plot_width=400, plot_height=400, x_axis_label="(Time to " +
+    p = figure(plot_width=450, plot_height=350, x_axis_label="(Time to " +
         "Catastrophe) * B_1", y_axis_label="Cumulative Distribution",
         title="ECDF vs Analytical CDF for (B_2 / B_1) = 0.25")
 
-    p.line(t, F, color="blue", legend_label="Analytical CDF for B_2 / B_1 = 0.25")
-    p.line(x, y, color="red", legend_label="ECDF for B_2 / B_1 = 0.25")
+    p.line(t, F, color=palette[0], line_width=3, legend_label="Analytical CDF for B_2 / B_1 = 0.25")
+    p.line(x, y, color=palette[5], line_width=3, legend_label="ECDF for B_2 / B_1 = 0.25")
     p.legend.location = "bottom_right"
-    return p
+    return bokeh.io.show(p)

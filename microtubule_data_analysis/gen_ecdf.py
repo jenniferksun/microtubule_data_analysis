@@ -30,6 +30,9 @@ def ecdf_vals(data):
 
 
 def plot_ecdf_labeled_v_unlabeled():
+    # Creating colors
+    palette = bokeh.palettes.Bokeh[7]
+    colors = [palette[0], palette[5]]
     df = load_data()
     # Slice out the time to catastrophe for labeled and unlabeled tubulin
     labeled = df['time to catastrophe (s)'][df['labeled'] == True].to_numpy()
@@ -49,11 +52,11 @@ def plot_ecdf_labeled_v_unlabeled():
     )
 
     # Plotting glyphs for the ECDF of labeled tubulin
-    p.circle(x_labeled, y_labeled, color="orange", legend_label="Labeled")
+    p.circle(x_labeled, y_labeled, color=colors[0], legend_label="Labeled")
 
     # Plotting glyphs for the ECDF of unlabeled tubulin
-    p.circle(x_unlabeled, y_unlabeled, legend_label="Unlabeled")
+    p.circle(x_unlabeled, y_unlabeled, color=colors[1], legend_label="Unlabeled")
 
     p.legend.location = "bottom_right"
     p.legend.click_policy = "hide"
-    return p
+    return bokeh.io.show(p)
