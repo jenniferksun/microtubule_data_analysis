@@ -1,6 +1,7 @@
 """Microtubule catastrophe times data analysis"""
 
 from .models import *
+from .tubulin_distributions import *
 from .tubulin_concentration import *
 # from .module3 import *
 
