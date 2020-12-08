@@ -46,9 +46,9 @@ def plot_ecdf_labeled_v_unlabeled():
     p = bokeh.plotting.figure(
         width=400,
         height=300,
-        x_axis_label="Catastophe time (s)",
+        x_axis_label="Time to Catastrophe (s)",
         y_axis_label="Cumulative distribution",
-        title="Labeled and unlabeled tubulin catastrophe time ECDFs"
+        title="Labeled and Unlabeled Tubulin Catastrophe Time ECDFs"
     )
 
     # Plotting glyphs for the ECDF of labeled tubulin

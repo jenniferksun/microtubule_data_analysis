@@ -51,9 +51,10 @@ def plot_simulated_experiment():
         data=df,
         q="(Time to Catastrophe) * B_1",
         cats=["ratio"],
-        palette=colors
+        palette=colors,
+        title="ECDF of Catastophe Times with Beta_2/Beta_1 Ratios"
         )
-    p.legend.title = "beta2/beta1 ratio"
+    p.legend.title = "Beta_2/Beta_1 ratio"
     p.legend.click_policy="hide"
     return bokeh.io.show(p)
 
@@ -94,9 +95,9 @@ def plot_ecdf_and_analytical_cdf_comparison():
     # Plot a CDF and ECDF of the times to catastrophe for B_2 / B_1 = 0.25.
     p = figure(plot_width=450, plot_height=350, x_axis_label="(Time to " +
         "Catastrophe) * B_1", y_axis_label="Cumulative Distribution",
-        title="ECDF vs Analytical CDF for (B_2 / B_1) = 0.25")
+        title="ECDF vs Analytical CDF for (Beta_2 / Beta_1) = 0.25")
 
-    p.line(t, F, color=palette[0], line_width=3, legend_label="Analytical CDF for B_2 / B_1 = 0.25")
-    p.line(x, y, color=palette[5], line_width=3, legend_label="ECDF for B_2 / B_1 = 0.25")
+    p.line(t, F, color=palette[0], line_width=3, legend_label="Analytical CDF for Beta_2 / Beta_1 = 0.25")
+    p.line(x, y, color=palette[5], line_width=3, legend_label="ECDF for Beta_2 / Beta_1 = 0.25")
     p.legend.location = "bottom_right"
     return bokeh.io.show(p)
