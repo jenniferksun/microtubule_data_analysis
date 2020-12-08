@@ -150,10 +150,16 @@ def plot_ecdf_with_conf_ints_and_DKW_bounds_labeled_v_unlabeled():
     # Find DKW upper bound for confidence interval of unlabeled.
     upper_bounds_unlabeled = F_x_unlabeled + eps_unlabeled
     upper_bounds_unlabeled[upper_bounds_unlabeled > 1] = 1
+    
+    # Re-populate labeled column for plot legend.
+    df_temp = df.copy()
+    df_temp = df_temp.replace(True, "Labeled Tubulin")
+    df_temp = df_temp.replace(False, "Unlabeled Tubulin")
+    
 
     # Plot ECDFs of times to catastrophe for labeled and unlabeled.
     p = iqplot.ecdf(
-        data = df,
+        data = df_temp,
         q = "time to catastrophe (s)",
         cats = ["labeled"], 
         conf_int = True,
@@ -167,7 +173,7 @@ def plot_ecdf_with_conf_ints_and_DKW_bounds_labeled_v_unlabeled():
 
     # Plot unlabeled bounds
     p.line(x_unlabeled, lower_bounds_unlabeled, color=palette[4], legend_label="Unlabeled lower bound", line_width=1.5)
-    p.line(x_unlabeled, upper_bounds_unlabeled, color=palette[3], legend_label="Unlabeled upper bound", line_width=1.5)
+    p.line(x_unlabeled, upper_bounds_unlabeled, color=palette[6], legend_label="Unlabeled upper bound", line_width=1.5)
 
     p.legend.location = "bottom_right"
     p.legend.click_policy="hide"
